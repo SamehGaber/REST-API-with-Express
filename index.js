@@ -5,6 +5,7 @@ const hostname='localhost';
 const bodyParser =require('body-parser');
 const port =3000;
 const dishRouter =require('./router/dishRouter');
+const promoRouter=require('./router/promoRouter');
 
 const app =express();
 app.use(morgan('dev'));
@@ -12,7 +13,8 @@ app.use(express.static(__dirname +'/public'));
 app.use(bodyParser.json());
 app.use('/dishes',dishRouter);
 app.use('/dishes/:dishID',dishRouter); // defining the end point 
-
+app.use('/promotions',promoRouter);
+app.use('/promotions/:promoID',promoRouter);
 
 app.use((req,res,next) =>{
  
