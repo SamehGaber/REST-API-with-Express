@@ -11,34 +11,7 @@ app.use(morgan('dev'));
 app.use(express.static(__dirname +'/public'));
 app.use(bodyParser.json());
 app.use('/dishes',dishRouter);
-
-
-
-app.get('/dishes/:dishID',(req,res,next)=>{
-     res.end('will send you deailts of dishe:' +req.params.dishID)
-     });
-    
-app.post('/dishes/:dishID',(req,res,next)=>{
-    
-        res.statusCode = 403;
-        res.end('POST operation not supported on'+req.params.dishID)
-    
-     });
-app.put('/dishes/:dishID',(req,res,next)=>{
-     
-     res.write('will update dish:'+req.params.dishID)
-     res.end(req.params.dishID+'will be updated with'+req.params.name +'and decription of '+req.body.description)
-     });
-    
-app.delete('/dishes/:dishID',(req,res,next)=>{
-     res.end('delet  dishe '+req.params.dishID)
-     });
-
-
-
-
-
-
+app.use('/dishes/:dishID',dishRouter); // defining the end point 
 
 
 app.use((req,res,next) =>{
